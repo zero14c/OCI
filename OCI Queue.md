@@ -1,8 +1,15 @@
 ## Overview of Queue
 __`Oracle Cloud Infrastructure (OCI) Queue`__ is a __`fully managed serverless service`__ that helps __`decouple systems`__ and enable __`asynchronous operations`__. 
-Queue handles __`high-volume transactional data`__ that requires independently processed messages __`without loss or duplication`__. Queue supports transparent, 
-__`automatic scaling`__ based on throughput for __`producers`__ and __`consumers`__. 
+Queue handles __`high-volume transactional data`__ that requires independently processed messages __`without loss or duplication`__. 
+Queue supports transparent, __`automatic scaling`__ based on throughput for __`producers`__ and __`consumers`__. 
 Queue uses __`open standards`__ to support communication with any client or producer with minimal effort.
+
+__`Oracle Cloud Infrastructure (OCI) Queue`__ 
+is a __`fully managed serverless service`__ 
+helps __`decouple systems`__ and enable __`asynchronous operations`__.
+handles __`high-volume transactional data`__ that requires independently processed messages __`without loss or duplication`__.
+__`automatic scaling`__
+uses __`open standards`__
 
 The OCI Queue service is built on __four principles__:
 
