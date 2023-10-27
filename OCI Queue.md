@@ -34,7 +34,7 @@ Queue helps decouple applications and systems by using event-driven architecture
 Decoupling ensures that individual application components can scale independently and that as new application components get built, 
 they can publish or subscribe to the queue.
 
-A diagram representing a producer sending messages to multiple queues consumed by a consumer.
+![A diagram representing a producer sending messages to multiple queues consumed by a consumer.](https://docs.oracle.com/en-us/iaas/Content/queue/images/queue-overview.png)
 
 #### Reliable Message Processing
 Queue guarantees that a message is never lost, even if the consumer is unavailable for consumption. A published message is persistent until it's either deleted or expired.
