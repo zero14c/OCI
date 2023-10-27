@@ -37,17 +37,17 @@ the message must be __deleted to prevent redelivery__ to another consumer.
 The Queue service provides the following benefits.
 
 #### Application Decoupling
-Queue helps decouple applications and systems by using event-driven architecture. 
-Decoupling ensures that individual application components can scale independently and that as new application components get built, 
+Queue helps __`decouple applications`__ and systems by using __`event-driven architecture`__. 
+Decoupling ensures that individual application components can __`scale independently`__ and that as new application components get built, 
 they can publish or subscribe to the queue.
 
 ![A diagram representing a producer sending messages to multiple queues consumed by a consumer.](https://docs.oracle.com/en-us/iaas/Content/queue/images/queue-overview.png)
 
 #### Reliable Message Processing
-Queue guarantees that a message is never lost, even if the consumer is unavailable for consumption. 
-A published message is persistent until it's either deleted or expired.
+__Queue guarantees that a message is never lost__, even if the consumer is unavailable for consumption. 
+__A published message is persistent until it's either deleted or expired.__
 
-If a message isn't consumed successfully, it's sent to a dead letter queue (DLQ). 
+If a message isn't consumed successfully, it's sent to a __`dead letter queue (DLQ)`__. 
 Dead letter queues let you isolate problematic messages to determine why they're failing. 
 Isolating and consuming problematic messages in this way can guarantee successful delivery to a consumer application at least once. 
 See Dead Letter Queues for more information.
@@ -59,7 +59,9 @@ Queue can be called using __RESTful API__ (with an Open API specification) defin
 The Queue service uses the following concepts.
 
 #### message
-A message is an element in a queue that contains a payload in the form of a string. The string can be in any format, including XML, JSON, CSV, a Base64-encoded binary message, and even compressed formats such as gzip. Producers and consumers should agree upon the message format. Each message is processed independently.
+A message is an element in a queue that contains a __`payload`__ in the form of a __`string`__. 
+The string can be in any format, including XML, JSON, CSV, a Base64-encoded binary message, and even compressed formats such as gzip. 
+Producers and consumers should agree upon the message format. Each message is processed independently.
 
 #### producer
 A client which sends messages to the queue.
@@ -68,7 +70,9 @@ A client which sends messages to the queue.
 A client which receives messages from a queue. The consumer is also responsible for deleting messages from the queue after the messages are received.
 
 #### channel
-An ephemeral destination within a queue that can be created on demand. Messages can be published to a specific channel within a queue, and consumers can retrieve messages from specific channels. For more information, see Channels.
+An ephemeral destination within a queue that can be created on demand. 
+Messages can be published to a specific channel within a queue, 
+and consumers can retrieve messages from specific channels. For more information, see Channels.
 
 #### maximum retention period
 The length of time that a queue retains a message until the message is automatically deleted by the system, if not deleted by a consumer. Maximum retention period is configurable to values of 10 seconds to 7 days at the queue level. The default value is 1 day.
