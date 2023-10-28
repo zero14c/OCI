@@ -4,14 +4,16 @@ Queue handles __`high-volume transactional data`__ that requires independently p
 Queue supports transparent, __`automatic scaling`__ based on throughput for __`producers`__ and __`consumers`__. 
 Queue uses __`open standards`__ to support communication with any client or producer with minimal effort.
 
-__`Oracle Cloud Infrastructure (OCI) Queue`__ 
-is a __`fully managed serverless service`__ 
-helps __`decouple systems`__ and enable __`asynchronous operations`__.
-handles __`high-volume transactional data`__ that requires independently processed messages __`without loss or duplication`__.
-__`automatic scaling`__
-uses __`open standards`__
+***`Oracle Cloud Infrastructure (OCI) Queue`***
+- __`fully managed serverless service`__ 
+- __`decouple systems`__ 
+- __`asynchronous operations`__.
+- __`high-volume transactional data`__
+- __`without loss or duplication`__.
+- __`automatic scaling`__
+- __`open standards`__
 
-The OCI Queue service is built on __four principles__:
+The OCI Queue service is built on __<mark>four</mark> principles__:
 
 __`Publishing`__
 Messages can be published to a queue by one or more __producers__, each with a __retention period__. 
