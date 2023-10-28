@@ -1,4 +1,4 @@
-## Overview of Queue
+# Overview of Queue
 __`Oracle Cloud Infrastructure (OCI) Queue`__ is a __`fully managed serverless service`__ that helps __`decouple systems`__ and enable __`asynchronous operations`__. 
 Queue handles __`high-volume transactional data`__ that requires independently processed messages __`without loss or duplication`__. 
 Queue supports transparent, __`automatic scaling`__ based on throughput for __`producers`__ and __`consumers`__. 
@@ -13,7 +13,7 @@ Queue uses __`open standards`__ to support communication with any client or prod
 - __`automatic scaling`__
 - __`open standards`__
 
-The OCI Queue service is built on __`four` principles__:
+## The OCI Queue service is built on __`four` principles__:
 
 1. __`Publishing`__
     - __`Messages`__ can be published to a queue by one or more __`producers`__,
@@ -34,10 +34,10 @@ which is known as its __`visibility timeout`__.
 4. __`Deleting`__
     - After a message has been delivered to and processed by a consumer, the message must be __deleted to prevent redelivery__ to another consumer.
 
-### Benefits
+## Benefits
 The Queue service provides the following benefits.
 
-#### 1. Application Decoupling
+### 1. Application Decoupling
 - Queue helps __`decouple applications`__ and systems by using __`event-driven architecture`__. 
 - Decoupling ensures that individual application components can __`scale independently`__ and
 - that as new application components get built, 
@@ -45,7 +45,7 @@ they can publish or subscribe to the queue.
 
 ![A diagram representing a producer sending messages to multiple queues consumed by a consumer.](https://docs.oracle.com/en-us/iaas/Content/queue/images/queue-overview.png)
 
-#### 2. Reliable Message Processing
+### 2. Reliable Message Processing
 __Queue guarantees that a message is never lost__, even if the consumer is unavailable for consumption. 
 __A published message is persistent until it's either deleted or expired.__
 
@@ -54,66 +54,66 @@ Dead letter queues let you __isolate problematic messages__ to determine why the
 Isolating and consuming problematic messages in this way can guarantee successful delivery to a consumer application at least once. 
 See Dead Letter Queues for more information.
 
-#### 3. Open Standards
+### 3. Open Standards
 Queue can be called using __RESTful API__ (with an Open API specification) definition or by using the industry standard __STOMP protocol__.
 
-### Concepts
+## Concepts
 The Queue service uses the following concepts.
 
-#### message
+### message
 - A message is an element in a queue that contains a __`payload`__ in the form of a __`string`__. 
 - The string can be in any format, including __XML, JSON, CSV, a Base64-encoded binary message__, and even __compressed formats__ such as gzip. 
 - Producers and consumers should agree upon the message format. Each message is processed independently.
 
-#### producer
+### producer
 A client which __`sends messages` to the `queue`__.
 
-#### consumer
+### consumer
 - A client which __`receives messages` from a `queue`__.
 - The consumer is also __responsible for `deleting messages` from the queue__ after the messages are received.
 
-#### channel
+### channel
 - An ephemeral destination within a queue that can be __created on demand__. 
 - __Messages can be published to a specific channel within a queue__, 
 - and __consumers can retrieve messages from specific channels__.
 - For more information, see Channels.
 
-#### maximum retention period
+### maximum retention period
 - __The 'length of time that a queue retains a message' until the message is automatically deleted by the system, 'if not deleted by a consumer'__.
 - Maximum retention period is configurable to values of __`10 seconds to 7 days`__ at the queue level.
 - The __`default value is 1 day`__.
 
-#### delivery count
+### delivery count
 The __number of times that a message is delivered to a consumer upon request__.
 
-#### maximum delivery attempts
+### maximum delivery attempts
 - The __'number of times' that a 'message is delivered to a consumer', but not updated or deleted__, before it's sent to a __`dead letter queue (DLQ)`__.
 - Maximum delivery attempts is configurable to values of __`1-20`__ at the queue level. For more information, see delivery count.
 
-#### polling timeout
+### polling timeout
 - The __`length of time` that a consumer will wait for messages to consume__.
 - Increasing the polling timeout reduces the number of times a consumer requests messages from the queue but the response indicates that there are no available messages to consume.
 - Polling timeout is configurable to values of __`0 to 30 seconds`__ at the queue level, and consumers can set the value when requesting messages.
 - The __`default` value is `30 seconds`__. For more information, see long polling.
 
-#### visibility timeout
+### visibility timeout
 - The __length of time during which a message received from the queue by one consumer isn't visible to other consumers__.
 - Visibility timeout is configurable to values of __`1 second` to `12 hours`__ at the queue level, and consumers can set the value when requesting messages.
 - The __`default` value is `30 seconds`__.
 - For more information, see message locking.
 
-#### visible messages
+### visible messages
 - The __`number of messages currently` in a queue that are `available for consumption`.__
 
-#### in-flight messages
+### in-flight messages
 - The __`number of messages delivered to a consumer` but `not yet deleted`__.
 - In-flight messages are __unavailable for redelivery until their visibility timeout has passed__.
 
-#### dead letter queue
+### dead letter queue
 - If a message isn't consumed successfully, and has __more delivery attempts than the configured maximum delivery attempts__, the message is transferred to a __`dead letter queue (DLQ)`__.
 - For more information, see Dead Letter Queues.
 
-### Guarantees
+## Guarantees
 The Queue service provides the following guarantees.
 
 - A successfully published message is guaranteed to be durable until it's either __`deleted` or its `retention period has passed`__. The __publication of a message is considered successful when the Queue service sends back an `acknowledgment` to the producer__. It does not matter whether the response was received.
@@ -121,7 +121,7 @@ The Queue service provides the following guarantees.
 - __A message will not be deleted by the Queue service before its `retention period` is over__.
 - __A consumer can process and `delete` a message during its `retention period`__.
 
-### Authentication and Authorization
+## Authentication and Authorization
 Each service in Oracle Cloud Infrastructure integrates with IAM for authentication and authorization, for all interfaces (the Console, SDK or CLI, and REST API).
 
 An administrator in your organization needs to set up groups, compartments , and policies  that control which users can access which services, and which resources, and the type of access they have. For example, policies control who can create users, groups, and compartments, or who can create and manage virtual deployments.
@@ -130,7 +130,7 @@ An administrator in your organization needs to set up groups, compartments , and
 - For details about writing policies for this service, see Queue Policies.
 - For details about writing policies for resources in other services, see Policy Reference.
 
-### Ways to Access Queue
+## Ways to Access Queue
 You can access Queue by using the Console (a browser-based interface), Oracle Cloud Infrastructure CLI, or REST APIs.
 
 Instructions for all three methods are included throughout this guide.
@@ -144,7 +144,7 @@ Instructions for all three methods are included throughout this guide.
     - To install the OCI CLI in your environment, follow the steps in the Install CLI Quickstart.
     - When using REST APIs, refer to REST API documentation and API Reference and Endpoints.
 
-### Service Limits
+## Service Limits
 When you sign up for Oracle Cloud Infrastructure, a set of service limits is configured for your tenancy. The service limit is the quota or allowance set on a resource. Review the following service limits for Queue resources.
 
 Resource |	Details
