@@ -16,24 +16,23 @@ Queue uses __`open standards`__ to support communication with any client or prod
 The OCI Queue service is built on __`four` principles__:
 
 1. __`Publishing`__
-Messages can be published to a queue by one or more __producers__, each with a __retention period__. 
-If retention isn't specified, the message expires using a retention period defined at the queue level. 
-A __message__ contains a __payload__ in the form of a string.
+    - __`Messages`__ can be published to a queue by one or more __`producers`__,
+    - each with a __`retention period`__.
+    - If retention isn't specified, the __`message` expires using a `retention period` defined at the `queue level`__.
+    - A __`message`__ contains a __`payload`__ in the form of a __`string`__.
 
 2. __`Consuming`__
-Multiple __consumers__ can consume messages from a single queue. 
-Consumer count can scale along with the rate of messages being published. 
-After a message is delivered to a consumer, the message is hidden from other consumers for a pre-defined amount of time, 
-which is known as its __visibility timeout__.
+    - Multiple __`consumers`__ can consume messages from a __single `queue`__.
+    - Consumer count can __`scale`__ along with the __rate of messages being published__.
+    - After a message is delivered to a consumer, the message is hidden from other consumers for a pre-defined amount of time, 
+which is known as its __`visibility timeout`__.
 
 3. __`Updating`__
-If processing a message takes longer than expected, 
-consumers can __extend the visibility timeout of a message__. 
-Extending the visibility timeout prevents the message from being returned to the queue and being delivered to another consumer.
+    - If processing a message takes longer than expected, consumers can __extend the visibility timeout of a message__.
+    - Extending the visibility timeout prevents the message from being returned to the queue and being delivered to another consumer.
 
 4. __`Deleting`__
-After a message has been delivered to and processed by a consumer, 
-the message must be __deleted to prevent redelivery__ to another consumer.
+    - After a message has been delivered to and processed by a consumer, the message must be __deleted to prevent redelivery__ to another consumer.
 
 ### Benefits
 The Queue service provides the following benefits.
