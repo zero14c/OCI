@@ -13,25 +13,25 @@ Queue uses __`open standards`__ to support communication with any client or prod
 - __`automatic scaling`__
 - __`open standards`__
 
-The OCI Queue service is built on __<mark>four</mark> principles__:
+The OCI Queue service is built on __`four` principles__:
 
-__`Publishing`__
+1. __`Publishing`__
 Messages can be published to a queue by one or more __producers__, each with a __retention period__. 
 If retention isn't specified, the message expires using a retention period defined at the queue level. 
 A __message__ contains a __payload__ in the form of a string.
 
-__`Consuming`__
+2. __`Consuming`__
 Multiple __consumers__ can consume messages from a single queue. 
 Consumer count can scale along with the rate of messages being published. 
 After a message is delivered to a consumer, the message is hidden from other consumers for a pre-defined amount of time, 
 which is known as its __visibility timeout__.
 
-__`Updating`__
+3. __`Updating`__
 If processing a message takes longer than expected, 
 consumers can __extend the visibility timeout of a message__. 
 Extending the visibility timeout prevents the message from being returned to the queue and being delivered to another consumer.
 
-__`Deleting`__
+4. __`Deleting`__
 After a message has been delivered to and processed by a consumer, 
 the message must be __deleted to prevent redelivery__ to another consumer.
 
