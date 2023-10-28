@@ -29,7 +29,7 @@ which is known as its __`visibility timeout`__.
 
 3. __`Updating`__
     - If processing a message takes longer than expected, consumers can __extend the visibility timeout of a message__.
-    - Extending the visibility timeout prevents the message from being returned to the queue and being delivered to another consumer.
+    - Extending the visibility timeout __prevents the message from being returned to the queue__ and being delivered to another consumer.
 
 4. __`Deleting`__
     - After a message has been delivered to and processed by a consumer, the message must be __deleted to prevent redelivery__ to another consumer.
@@ -37,23 +37,23 @@ which is known as its __`visibility timeout`__.
 ### Benefits
 The Queue service provides the following benefits.
 
-#### Application Decoupling
+#### 1. Application Decoupling
 Queue helps __`decouple applications`__ and systems by using __`event-driven architecture`__. 
 Decoupling ensures that individual application components can __`scale independently`__ and that as new application components get built, 
 they can publish or subscribe to the queue.
 
 ![A diagram representing a producer sending messages to multiple queues consumed by a consumer.](https://docs.oracle.com/en-us/iaas/Content/queue/images/queue-overview.png)
 
-#### Reliable Message Processing
+#### 2. Reliable Message Processing
 __Queue guarantees that a message is never lost__, even if the consumer is unavailable for consumption. 
 __A published message is persistent until it's either deleted or expired.__
 
 If a message isn't consumed successfully, it's sent to a __`dead letter queue (DLQ)`__. 
-Dead letter queues let you isolate problematic messages to determine why they're failing. 
+Dead letter queues let you __isolate problematic messages__ to determine why they're failing. 
 Isolating and consuming problematic messages in this way can guarantee successful delivery to a consumer application at least once. 
 See Dead Letter Queues for more information.
 
-#### Open Standards
+#### 3. Open Standards
 Queue can be called using __RESTful API__ (with an Open API specification) definition or by using the industry standard __STOMP protocol__.
 
 ### Concepts
@@ -61,31 +61,31 @@ The Queue service uses the following concepts.
 
 #### message
 A message is an element in a queue that contains a __`payload`__ in the form of a __`string`__. 
-The string can be in any format, including XML, JSON, CSV, a Base64-encoded binary message, and even compressed formats such as gzip. 
+The string can be in any format, including __XML, JSON, CSV, a Base64-encoded binary message__, and even __compressed formats__ such as gzip. 
 Producers and consumers should agree upon the message format. Each message is processed independently.
 
 #### producer
-A client which sends messages to the queue.
+A client which __`sends messages` to the `queue`__.
 
 #### consumer
-A client which receives messages from a queue. The consumer is also responsible for deleting messages from the queue after the messages are received.
+A client which __`receives messages` from a `queue`__. The consumer is also __responsible for `deleting messages` from the queue__ after the messages are received.
 
 #### channel
-An ephemeral destination within a queue that can be created on demand. 
-Messages can be published to a specific channel within a queue, 
-and consumers can retrieve messages from specific channels. For more information, see Channels.
+An ephemeral destination within a queue that can be __created on demand__. 
+__Messages can be published to a specific channel within a queue__, 
+and __consumers can retrieve messages from specific channels__. For more information, see Channels.
 
 #### maximum retention period
-The length of time that a queue retains a message until the message is automatically deleted by the system, if not deleted by a consumer. Maximum retention period is configurable to values of 10 seconds to 7 days at the queue level. The default value is 1 day.
+__The 'length of time that a queue retains a message' until the message is automatically deleted by the system, 'if not deleted by a consumer'__. Maximum retention period is configurable to values of __`10 seconds to 7 days`__ at the queue level. The __`default value is 1 day`__.
 
 #### delivery count
-The number of times that a message is delivered to a consumer upon request.
+The __number of times that a message is delivered to a consumer upon request__.
 
 #### maximum delivery attempts
-The number of times that a message is delivered to a consumer, but not updated or deleted, before it's sent to a dead letter queue (DLQ). Maximum delivery attempts is configurable to values of 1-20 at the queue level. For more information, see delivery count.
+The __'number of times' that a 'message is delivered to a consumer', but not updated or deleted__, before it's sent to a __`dead letter queue (DLQ)`__. Maximum delivery attempts is configurable to values of __`1-20`__ at the queue level. For more information, see delivery count.
 
 #### polling timeout
-The length of time that a consumer will wait for messages to consume. Increasing the polling timeout reduces the number of times a consumer requests messages from the queue but the response indicates that there are no available messages to consume. Polling timeout is configurable to values of 0 to 30 seconds at the queue level, and consumers can set the value when requesting messages. The default value is 30 seconds. For more information, see long polling.
+The __`length of time` that a consumer will wait for messages to consume__. Increasing the polling timeout reduces the number of times a consumer requests messages from the queue but the response indicates that there are no available messages to consume. Polling timeout is configurable to values of 0 to 30 seconds at the queue level, and consumers can set the value when requesting messages. The default value is 30 seconds. For more information, see long polling.
 
 #### visibility timeout
 The length of time during which a message received from the queue by one consumer isn't visible to other consumers. Visibility timeout is configurable to values of 1 second to 12 hours at the queue level, and consumers can set the value when requesting messages. The default value is 30 seconds. For more information, see message locking.
