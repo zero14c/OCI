@@ -38,8 +38,9 @@ which is known as its __`visibility timeout`__.
 The Queue service provides the following benefits.
 
 #### 1. Application Decoupling
-Queue helps __`decouple applications`__ and systems by using __`event-driven architecture`__. 
-Decoupling ensures that individual application components can __`scale independently`__ and that as new application components get built, 
+- Queue helps __`decouple applications`__ and systems by using __`event-driven architecture`__. 
+- Decoupling ensures that individual application components can __`scale independently`__ and
+- that as new application components get built, 
 they can publish or subscribe to the queue.
 
 ![A diagram representing a producer sending messages to multiple queues consumed by a consumer.](https://docs.oracle.com/en-us/iaas/Content/queue/images/queue-overview.png)
@@ -60,51 +61,65 @@ Queue can be called using __RESTful API__ (with an Open API specification) defin
 The Queue service uses the following concepts.
 
 #### message
-A message is an element in a queue that contains a __`payload`__ in the form of a __`string`__. 
-The string can be in any format, including __XML, JSON, CSV, a Base64-encoded binary message__, and even __compressed formats__ such as gzip. 
-Producers and consumers should agree upon the message format. Each message is processed independently.
+- A message is an element in a queue that contains a __`payload`__ in the form of a __`string`__. 
+- The string can be in any format, including __XML, JSON, CSV, a Base64-encoded binary message__, and even __compressed formats__ such as gzip. 
+- Producers and consumers should agree upon the message format. Each message is processed independently.
 
 #### producer
 A client which __`sends messages` to the `queue`__.
 
 #### consumer
-A client which __`receives messages` from a `queue`__. The consumer is also __responsible for `deleting messages` from the queue__ after the messages are received.
+- A client which __`receives messages` from a `queue`__.
+- The consumer is also __responsible for `deleting messages` from the queue__ after the messages are received.
 
 #### channel
-An ephemeral destination within a queue that can be __created on demand__. 
-__Messages can be published to a specific channel within a queue__, 
-and __consumers can retrieve messages from specific channels__. For more information, see Channels.
+- An ephemeral destination within a queue that can be __created on demand__. 
+- __Messages can be published to a specific channel within a queue__, 
+- and __consumers can retrieve messages from specific channels__.
+- For more information, see Channels.
 
 #### maximum retention period
-__The 'length of time that a queue retains a message' until the message is automatically deleted by the system, 'if not deleted by a consumer'__. Maximum retention period is configurable to values of __`10 seconds to 7 days`__ at the queue level. The __`default value is 1 day`__.
+- __The 'length of time that a queue retains a message' until the message is automatically deleted by the system, 'if not deleted by a consumer'__.
+- Maximum retention period is configurable to values of __`10 seconds to 7 days`__ at the queue level.
+- The __`default value is 1 day`__.
 
 #### delivery count
 The __number of times that a message is delivered to a consumer upon request__.
 
 #### maximum delivery attempts
-The __'number of times' that a 'message is delivered to a consumer', but not updated or deleted__, before it's sent to a __`dead letter queue (DLQ)`__. Maximum delivery attempts is configurable to values of __`1-20`__ at the queue level. For more information, see delivery count.
+- The __'number of times' that a 'message is delivered to a consumer', but not updated or deleted__, before it's sent to a __`dead letter queue (DLQ)`__.
+- Maximum delivery attempts is configurable to values of __`1-20`__ at the queue level. For more information, see delivery count.
 
 #### polling timeout
-The __`length of time` that a consumer will wait for messages to consume__. Increasing the polling timeout reduces the number of times a consumer requests messages from the queue but the response indicates that there are no available messages to consume. Polling timeout is configurable to values of 0 to 30 seconds at the queue level, and consumers can set the value when requesting messages. The default value is 30 seconds. For more information, see long polling.
+- The __`length of time` that a consumer will wait for messages to consume__.
+- Increasing the polling timeout reduces the number of times a consumer requests messages from the queue but the response indicates that there are no available messages to consume.
+- Polling timeout is configurable to values of __`0 to 30 seconds`__ at the queue level, and consumers can set the value when requesting messages.
+- The __`default` value is `30 seconds`__. For more information, see long polling.
 
 #### visibility timeout
-The length of time during which a message received from the queue by one consumer isn't visible to other consumers. Visibility timeout is configurable to values of 1 second to 12 hours at the queue level, and consumers can set the value when requesting messages. The default value is 30 seconds. For more information, see message locking.
+- The __length of time during which a message received from the queue by one consumer isn't visible to other consumers__.
+- Visibility timeout is configurable to values of __`1 second` to `12 hours`__ at the queue level, and consumers can set the value when requesting messages.
+- The __`default` value is `30 seconds`__.
+- For more information, see message locking.
 
 #### visible messages
-The number of messages currently in a queue that are available for consumption.
+- The __`number of messages currently` in a queue that are `available for consumption`.__
 
 #### in-flight messages
-The number of messages delivered to a consumer but not yet deleted. In-flight messages are unavailable for redelivery until their visibility timeout has passed.
+- The __`number of messages delivered to a consumer` but `not yet deleted`__.
+- In-flight messages are __unavailable for redelivery until their visibility timeout has passed__.
 
 #### dead letter queue
-If a message isn't consumed successfully, and has more delivery attempts than the configured maximum delivery attempts, the message is transferred to a dead letter queue (DLQ). For more information, see Dead Letter Queues.
+- If a message isn't consumed successfully, and has __more delivery attempts than the configured maximum delivery attempts__, the message is transferred to a __`dead letter queue (DLQ)`__.
+- For more information, see Dead Letter Queues.
 
 ### Guarantees
 The Queue service provides the following guarantees.
 
-- A successfully published message is guaranteed to be durable until it's either deleted or its retention period has passed. The publication of a message is considered successful when the Queue service sends back an acknowledgment to the producer. It does not matter whether the response was received.
-- A message within the visibility timeout is guaranteed not to be delivered to another consumer until that timeout expires.
-- A message will not be deleted by the Queue service before its retention period is over. A consumer can process and delete a message during its retention period.
+- A successfully published message is guaranteed to be durable until it's either __`deleted` or its `retention period has passed`__. The __publication of a message is considered successful when the Queue service sends back an `acknowledgment` to the producer__. It does not matter whether the response was received.
+- __A message within the `visibility timeout` is guaranteed not to be delivered to another consumer until that timeout expires__.
+- __A message will not be deleted by the Queue service before its `retention period` is over__.
+- __A consumer can process and `delete` a message during its `retention period`__.
 
 ### Authentication and Authorization
 Each service in Oracle Cloud Infrastructure integrates with IAM for authentication and authorization, for all interfaces (the Console, SDK or CLI, and REST API).
